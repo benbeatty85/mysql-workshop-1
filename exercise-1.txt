@@ -1,0 +1,16 @@
+benbeatty85:~/workspace (master) $ mysql-ctl start
+Installing MySQL
+ * Stopping MySQL database server mysqld
+   ...done.
+ * Starting MySQL database server mysqld
+   ...done.
+ * Checking for tables which need an upgrade, are corrupt or were 
+not closed cleanly.
+
+MySQL 5.5 database added.  Please make note of these credentials:
+
+       Root User: benbeatty85
+   Database Name: c9
+
+ * Starting MySQL database server mysqld
+   ...done.
