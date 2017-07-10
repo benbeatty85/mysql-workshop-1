@@ -1,0 +1,55 @@
+mysql> CREATE DATABASE Chickenfarm;
+Query OK, 1 row affected (0.00 sec)
+
+mysql> CREATE TABLE Chickens(
+    -> id INT AUTO_INCREMENT PRIMARY KEY,
+    -> type ENUM('Hen', 'Chick', 'Rooster'),
+    -> hatchdate DATETIME,
+    -> solddate DATETIME
+    -> );
+Query OK, 0 rows affected (0.02 sec)
+
+mysql> SELECT * FROM Chickenfarm;
+ERROR 1146 (42S02): Table 'Chickenfarm.Chickenfarm' doesn't exist
+mysql> SELECT * FROM Chickens
+    -> \c
+mysql> SELECT * FROM Chickens;
+Empty set (0.00 sec)
+
+mysql> INSERT INTO Chickens (id, type, hatchdate, solddate)
+    -> VALUES('1', 'Rooster', '2017-01-04 00:00:00', null);
+Query OK, 1 row affected (0.01 sec)
+
+mysql> INSERT INTO Chickens (id, type, hatchdate, solddate)
+    -> VALUES('2','hen', '2017-02-03 00:00:00', null);
+Query OK, 1 row affected (0.00 sec)
+
+mysql> INSERT INTO Chickens (id, type, hatchdate, solddate)
+    -> VALUES('3', 'chick', '2017-06-04 00:00:00', null);
+Query OK, 1 row affected (0.01 sec)
+
+mysql> INSERT INTO Chickens (id, type, hatchdate, solddate)
+    -> VALUES('4', 'Rooster', '2016-07-22 00:00:00', '2017-05-24 00:00:00');
+Query OK, 1 row affected (0.00 sec)
+
+mysql> INSERT INTO Chickens (id, type, hatchdate, solddate)
+    -> VALUES('5', 'hen', '2016-08-20 00:00:00', '2017-04-17 00:00:00');
+Query OK, 1 row affected (0.01 sec)
+
+mysql> INSERT INTO Chickens (id, type, hatchdate, solddate)
+    -> VALUES('6', 'Rooster', '2016-02-19', '2017-05-12');
+Query OK, 1 row affected (0.01 sec)
+
+mysql> SELECT * FROM Chickens;
++----+---------+---------------------+---------------------+
+| id | type    | hatchdate           | solddate            |
++----+---------+---------------------+---------------------+
+|  1 | Rooster | 2017-01-04 00:00:00 | NULL                |
+|  2 | Hen     | 2017-02-03 00:00:00 | NULL                |
+|  3 | Chick   | 2017-06-04 00:00:00 | NULL                |
+|  4 | Rooster | 2016-07-22 00:00:00 | 2017-05-24 00:00:00 |
+|  5 | Hen     | 2016-08-20 00:00:00 | 2017-04-17 00:00:00 |
+|  6 | Rooster | 2016-02-19 00:00:00 | 2017-05-12 00:00:00 |
++----+---------+---------------------+---------------------+
+6 rows in set (0.00 sec)
+
