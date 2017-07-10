@@ -1,0 +1,32 @@
+mysql> CREATE TABLE Account (
+    -> id INT AUTO_INCREMENT PRIMARY KEY
+    -> );
+Query OK, 0 rows affected (0.02 sec)
+
+mysql> CREATE TABLE Addressbook (
+    -> id INT AUTO_INCREMENT PRIMARY KEY
+    -> );
+Query OK, 0 rows affected (0.01 sec)
+
+mysql> CREATE TABLE Entry (
+    -> id INT AUTO_INCREMENT PRIMARY KEY
+    -> );
+Query OK, 0 rows affected (0.01 sec)
+
+mysql> CREATE TABLE Test (
+    -> id INT AUTO_INCREMENT PRIMARY KEY
+    -> );
+Query OK, 0 rows affected (0.01 sec)
+
+mysql> USE decodemtl_addressbook;
+Database changed
+mysql> SHOW TABLES;
++---------------------------------+
+| Tables_in_decodemtl_addressbook |
++---------------------------------+
+| Account                         |
+| Addressbook                     |
+| Entry                           |
+| Test                            |
++---------------------------------+
+4 rows in set (0.00 sec)
