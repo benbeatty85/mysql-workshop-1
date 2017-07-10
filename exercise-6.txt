@@ -1,0 +1,12 @@
+mysql> DROP TABLE IF EXISTS Test;
+Query OK, 0 rows affected (0.00 sec)
+
+mysql> SHOW TABLES;
++---------------------------------+
+| Tables_in_decodemtl_addressbook |
++---------------------------------+
+| Account                         |
+| Addressbook                     |
+| Entry                           |
++---------------------------------+
+3 rows in set (0.00 sec)
