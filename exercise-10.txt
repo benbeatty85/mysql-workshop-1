@@ -1,0 +1,105 @@
+mysql> USE Hotel_Beatty;
+Database changed
+mysql> CREATE TABLE rooms (id int NOT NULL AUTO_INCREMENT, PRIMARY KEY(id) );
+Query OK, 0 rows affected (0.01 sec)
+
+mysql> DESCRIBE rooms
+    -> ;
++-------+---------+------+-----+---------+----------------+
+| Field | Type    | Null | Key | Default | Extra          |
++-------+---------+------+-----+---------+----------------+
+| id    | int(11) | NO   | PRI | NULL    | auto_increment |
++-------+---------+------+-----+---------+----------------+
+1 row in set (0.00 sec)
+
+mysql> ALTER TABLE rooms ADD COLUMN maxOccupancy INT(3) NOT NULL;
+Query OK, 0 rows affected (0.02 sec)
+Records: 0  Duplicates: 0  Warnings: 0
+
+mysql> ALTER TABLE rooms ADD COLUMN roomtype ENUM('guest', 'janitor', 'restaurant', 'pool') NOT NULL;
+Query OK, 0 rows affected (0.04 sec)
+Records: 0  Duplicates: 0  Warnings: 0
+
+mysql> ALTER TABLE rooms ADD COLUMN floor INT(5) NOT NULL;
+Query OK, 0 rows affected (0.03 sec)
+Records: 0  Duplicates: 0  Warnings: 0
+
+mysql> ALTER TABLE rooms ADD COLUMN windowcount INT(2) NOT NULL;
+Query OK, 0 rows affected (0.02 sec)
+Records: 0  Duplicates: 0  Warnings: 0
+
+mysql> ALTER TABLE rooms ADD COLUMN carpet TINYINT(1) NOT NULL;
+Query OK, 0 rows affected (0.02 sec)
+Records: 0  Duplicates: 0  Warnings: 0
+
+mysql> DESCRIBE rooms;
++--------------+---------------------------------------------+------+-----+---------+----------------+
+| Field        | Type                                        | Null | Key | Default | Extra          |
++--------------+---------------------------------------------+------+-----+---------+----------------+
+| id           | int(11)                                     | NO   | PRI | NULL    | auto_increment |
+| maxOccupancy | int(3)                                      | NO   |     | NULL    |                |
+| roomtype     | enum('guest','janitor','restaurant','pool') | NO   |     | NULL    |                |
+| floor        | int(5)                                      | NO   |     | NULL    |                |
+| windowcount  | int(2)                                      | NO   |     | NULL    |                |
+| carpet       | tinyint(1)                                  | NO   |     | NULL    |                |
++--------------+---------------------------------------------+------+-----+---------+----------------+
+6 rows in set (0.00 sec)
+
+mysql> CREATE TABLE reservations (id int NOT NULL AUTO_INCREMENT, PRIMARY KEY(id) );
+Query OK, 0 rows affected (0.01 sec)
+
+mysql> ALTER TABLE reservations ADD COLUMN checkin DATETIME NOT NULL;
+Query OK, 0 rows affected (0.03 sec)
+Records: 0  Duplicates: 0  Warnings: 0
+
+mysql> ALTER TABLE reservations ADD COLUMN checkout DATETIME NOT NULL;
+Query OK, 0 rows affected (0.02 sec)
+Records: 0  Duplicates: 0  Warnings: 0
+
+mysql> ALTER TABLE reservations ADD COLUMN roomId int(11) NOT NULL;
+Query OK, 0 rows affected (0.02 sec)
+Records: 0  Duplicates: 0  Warnings: 0
+
+mysql> ALTER TABLE reservations ADD FOREIGN KEY (id) REFERENCES rooms (id);
+Query OK, 0 rows affected (0.03 sec)
+Records: 0  Duplicates: 0  Warnings: 0
+
+mysql> DESCRIBE reservations
+    -> ;
++----------+----------+------+-----+---------+----------------+
+| Field    | Type     | Null | Key | Default | Extra          |
++----------+----------+------+-----+---------+----------------+
+| id       | int(11)  | NO   | PRI | NULL    | auto_increment |
+| checkin  | datetime | NO   |     | NULL    |                |
+| checkout | datetime | NO   |     | NULL    |                |
+| roomId   | int(11)  | NO   |     | NULL    |                |
++----------+----------+------+-----+---------+----------------+
+4 rows in set (0.00 sec)
+
+mysql> ALTER TABLE reservations ADD FOREIGN KEY (roomId) REFERENCES rooms(id);
+Query OK, 0 rows affected (0.02 sec)
+Records: 0  Duplicates: 0  Warnings: 0
+
+mysql> DESCRIBE reservations;
++----------+----------+------+-----+---------+----------------+
+| Field    | Type     | Null | Key | Default | Extra          |
++----------+----------+------+-----+---------+----------------+
+| id       | int(11)  | NO   | PRI | NULL    | auto_increment |
+| checkin  | datetime | NO   |     | NULL    |                |
+| checkout | datetime | NO   |     | NULL    |                |
+| roomId   | int(11)  | NO   | MUL | NULL    |                |
++----------+----------+------+-----+---------+----------------+
+4 rows in set (0.00 sec)
+
+mysql> DESCRIBE rooms;
++--------------+---------------------------------------------+------+-----+---------+----------------+
+| Field        | Type                                        | Null | Key | Default | Extra          |
++--------------+---------------------------------------------+------+-----+---------+----------------+
+| id           | int(11)                                     | NO   | PRI | NULL    | auto_increment |
+| maxOccupancy | int(3)                                      | NO   |     | NULL    |                |
+| roomtype     | enum('guest','janitor','restaurant','pool') | NO   |     | NULL    |                |
+| floor        | int(5)                                      | NO   |     | NULL    |                |
+| windowcount  | int(2)                                      | NO   |     | NULL    |                |
+| carpet       | tinyint(1)                                  | NO   |     | NULL    |                |
++--------------+---------------------------------------------+------+-----+---------+----------------+
+6 rows in set (0.00 sec)
